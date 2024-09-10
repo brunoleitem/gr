@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"github.com/brunoleitem/gr/data"
+	"github.com/brunoleitem/gr/models"
 	"github.com/brunoleitem/gr/prompt"
 	"github.com/spf13/cobra"
 )
@@ -24,5 +25,7 @@ func setUserToken() {
 	pc := prompt.NewPrompt()
 	askContent := pc.Create("Please provide a valid token", "OpenAPI Token: ")
 	token := pc.Get(*askContent)
+	cfg := models.Config{Key: token}
+	cfg.Save()
 	println(token)
 }

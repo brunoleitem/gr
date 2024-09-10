@@ -7,17 +7,17 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-var db *sql.DB
+var DB *sql.DB
 
 func OpenDb() error {
 	var err error
 
-	db, err = sql.Open("sqlite3", "./data.db3")
+	DB, err = sql.Open("sqlite3", "./data.db3")
 	if err != nil {
 		return err
 	}
 
-	return db.Ping()
+	return DB.Ping()
 }
 
 func CreateTables() {
@@ -25,7 +25,7 @@ func CreateTables() {
 		"key" TEXT
 	);`
 
-	stmt, err := db.Prepare(createSQL)
+	stmt, err := DB.Prepare(createSQL)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
