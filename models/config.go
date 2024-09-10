@@ -11,6 +11,17 @@ type Config struct {
 	Key string
 }
 
+func (c *Config) Restore() (*Config, error) {
+	var result Config
+	query := `SELECT * FROM config LIMIT 1`
+	err := data.DB.QueryRow(query).Scan(&result.Key)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 func (c *Config) Save() error {
 	exists, err := c.exists()
 	if err != nil {
