@@ -18,7 +18,6 @@ func (c *Config) Restore() (*Config, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	return &result, nil
 }
 

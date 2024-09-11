@@ -1,9 +1,7 @@
 package cmd
 
 import (
-	"github.com/brunoleitem/gr/data"
-	"github.com/brunoleitem/gr/models"
-	"github.com/brunoleitem/gr/prompt"
+	"github.com/brunoleitem/gr/handler"
 	"github.com/spf13/cobra"
 )
 
@@ -12,20 +10,10 @@ var initCmd = &cobra.Command{
 	Short: "",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		data.CreateTables()
-		setUserToken()
+		handler.Init()
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(initCmd)
-}
-
-func setUserToken() {
-	pc := prompt.NewPrompt()
-	askContent := pc.Create("Please provide a valid token", "OpenAPI Token: ")
-	token := pc.Get(*askContent)
-	cfg := models.Config{Key: token}
-	cfg.Save()
-	println(token)
 }
