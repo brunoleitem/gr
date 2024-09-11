@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/brunoleitem/gr/data"
+	"github.com/brunoleitem/gr/handler"
 	"github.com/spf13/cobra"
 )
 
@@ -18,7 +19,8 @@ var rootCmd = &cobra.Command{
   readme using AI.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		run()
+		data.CreateTables()
+		handler.Generate()
 	},
 }
 
@@ -30,10 +32,5 @@ func Execute() {
 }
 
 func init() {
-	data.CreateTables()
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-func run() {
-
 }

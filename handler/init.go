@@ -7,7 +7,7 @@ import (
 
 func Init() {
 	pc := prompt.NewPrompt()
-	askContent := pc.Create("Please provide a valid token", "OpenAPI Token: ")
+	askContent := pc.Create("Please provide a valid token", "OpenAPI Token ")
 	token := pc.Get(*askContent)
 	cfg := models.Config{Key: token}
 	cfg.Save()
