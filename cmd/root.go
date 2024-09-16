@@ -6,8 +6,6 @@ package cmd
 import (
 	"os"
 
-	"github.com/brunoleitem/gr/data"
-	"github.com/brunoleitem/gr/handler"
 	"github.com/spf13/cobra"
 )
 
@@ -19,8 +17,8 @@ var rootCmd = &cobra.Command{
   readme using AI.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		data.CreateTables()
-		handler.Generate()
+		// data.CreateTables()
+		// handler.Generate()
 	},
 }
 

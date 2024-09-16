@@ -7,11 +7,10 @@ import (
 )
 
 var initCmd = &cobra.Command{
-	Use:   "init",
+	Use:   "token",
 	Short: "",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-
 		data.CreateTables()
 		handler.Init()
 	},
